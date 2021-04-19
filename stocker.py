@@ -661,7 +661,7 @@ class Stocker():
             plt.show()
         
     def retrieve_google_trends(self, search, date_range):
-        
+
         # Set up the trend fetching object
         pytrends = TrendReq(hl='en-US', tz=360)
         kw_list = [search]
@@ -768,7 +768,7 @@ class Stocker():
             print(related_queries[search]['rising'].head())
 
             # Upsample the data for joining with training data
-            trends = trends.resample('D')
+            trends = trends.resample('D').interpolate()
 
             trends = trends.reset_index(level=0)
             trends = trends.rename(columns={'date': 'ds', search: 'freq'})
