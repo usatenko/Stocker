@@ -752,7 +752,7 @@ class Stocker():
         # Show related queries, rising related queries
         # Graph changepoints, search frequency, stock price
         if search:
-            date_range = ['%s %s' % (str(min(train['Date'])), str(max(train['Date'])))]
+            date_range = ['%s %s' % (str(min(train['Date']).strftime('%Y-%m-%d')), str(max(train['Date']).strftime('%Y-%m-%d')))]
 
             # Get the Google Trends for specified terms and join to training dataframe
             trends, related_queries = self.retrieve_google_trends(search, date_range)
